@@ -3,7 +3,7 @@ import express from "express"
 import todosRoute from "./routes/todo.route"
 
 const app = express()
-const PORT: number | string = 5000
+const PORT = 5000
 
 app.use(express.json())
 
