@@ -1,18 +1,15 @@
-import express, { Request, Response } from "express"
+import express from "express"
 const router = express.Router()
 
+import Todo from "../controllers/todos.controller"
+import Persistence from "../services/persistence.service"
+const persistence = new Persistence()
+const todo = new Todo(persistence)
+
 router.route('/')
-    .get((req: Request, res: Response) => {
-        res.send('GET ALL TODOS')
-    })
-    .post((req: Request, res: Response) => {
-        res.send('POST ONE TODO')
-    })
-    .patch((req: Request, res: Response) => {
-        res.send('EDIT ONE TODO')
-    })
-    .delete((req: Request, res: Response) => {
-        res.send('DELETE ONE TODO')
-    })
+    .get(todo.getTodos)
+    .post(todo.createTodo)
+    .patch(todo.updateTodo)
+    .delete(todo.deleteTodo)
 
 export default router
