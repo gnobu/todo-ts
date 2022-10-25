@@ -15,14 +15,14 @@ export interface fileDataInterface {
 
 export type Todos = TodoObj[]
 
-export interface persistenceInterface {
+export interface IPersistence {
     readData(path: string): Promise<Todos>
     addData(path: string, newData: string): Promise<TodoObj>
     updateData(path: string, newData: TodoObj): Promise<TodoObj | undefined>
     deleteData(path: string, todoId: string): Promise<string | undefined>
 }
 
-class Persistence implements persistenceInterface {
+class Persistence implements IPersistence {
 
     async readData(path: string): Promise<Todos> {
         const data = await fsPromise.readFile(path, { encoding: 'utf-8' })

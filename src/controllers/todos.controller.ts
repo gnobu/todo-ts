@@ -3,11 +3,11 @@ import path from "path"
 import { Request, Response } from "express"
 import asyncHandler from "express-async-handler"
 
-import { TodoObj, Todos, persistenceInterface } from "../services/persistence.service"
+import { TodoObj, Todos, IPersistence } from "../services/persistence.service"
 
 class Todo {
-    persistence: persistenceInterface
-    constructor(persistence: persistenceInterface) {
+    persistence: IPersistence
+    constructor(persistence: IPersistence) {
         this.persistence = persistence
     }
 
